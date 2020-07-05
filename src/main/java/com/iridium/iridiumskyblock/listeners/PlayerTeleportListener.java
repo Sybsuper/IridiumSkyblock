@@ -17,7 +17,8 @@ public class PlayerTeleportListener implements Listener {
             final IslandManager islandManager = IridiumSkyblock.getIslandManager();
             final Island island = islandManager.getIslandViaLocation(toLocation);
             if (island == null) return;
-
+            Island fromIsland = islandManager.getIslandViaLocation(event.getFrom());
+            if (fromIsland != null && fromIsland.getId() == island.getId()) return;
             final Player player = event.getPlayer();
             final User user = User.getUser(player);
 
